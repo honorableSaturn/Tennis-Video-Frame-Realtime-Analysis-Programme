@@ -1,4 +1,4 @@
-import cv2, csv, time, sys
+import cv2, csv, time, sys, os
 import mediapipe as mp
 import numpy as np
 import math
@@ -8,7 +8,6 @@ screen_w, screen_h = pyautogui.size()
 
 
 sys.path.append(r"D:\Coding")
-sys.path.append(r"D:\Coding\Videos")
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -68,7 +67,8 @@ def vfra(path, *args):
     """ Video Frame Realtime Analysis 
     (function) def vfra(video: String) -> None
     """
-    path += "\Videos"
+    video_path = os.path.join("Videos", path)
+
     visualize_angles=1
     compute_frames=1
     frame_counter = 0
@@ -76,7 +76,7 @@ def vfra(path, *args):
     loss_counter = 0
     delay = 0
     wireframe_only = False
-    video = cv2.VideoCapture(path)
+    video = cv2.VideoCapture(video_path)
     fps = video.get(cv2.CAP_PROP_FPS) if video.get(cv2.CAP_PROP_FPS)>0 else 30
     frame_delay = int(1000/fps)
     frame_count = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
