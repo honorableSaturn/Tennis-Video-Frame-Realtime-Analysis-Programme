@@ -9,6 +9,7 @@ screen_w, screen_h = pyautogui.size()
 
 sys.path.append(r"D:\Coding")
 
+
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.animation import FuncAnimation
